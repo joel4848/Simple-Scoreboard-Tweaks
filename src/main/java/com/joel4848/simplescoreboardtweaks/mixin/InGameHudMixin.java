@@ -182,7 +182,7 @@ public abstract class InGameHudMixin {
         context.getMatrices().pop();
     }
 
-    public class ScoreboardUtils {
+    public static class ScoreboardUtils {
         private static final Pattern ALPHA_NUM_PATTERN = Pattern.compile("(\\d+)|(\\D+)");
 
         public static int compareNatural(String s1, String s2) {
