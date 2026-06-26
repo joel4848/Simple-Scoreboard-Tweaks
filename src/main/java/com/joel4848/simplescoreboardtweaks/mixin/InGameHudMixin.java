@@ -120,13 +120,16 @@ public abstract class InGameHudMixin {
 
         float scaleFactor = cfg.scale / 100.0f;
 
-        int baseX = scaledWidth  - boardWidth + cfg.offsetX;
-        int baseY = (scaledHeight - boardHeight) / 2 - 6 + cfg.offsetY;
+        int baseX = (int) (scaledWidth - (boardWidth * scaleFactor) - 1 + cfg.offsetX);
+        int baseY = (int) ((scaledHeight - (boardHeight * scaleFactor)) / 2 + cfg.offsetY);
 
         context.getMatrices().push();
+
         context.getMatrices().translate(baseX, baseY, 0);
         context.getMatrices().scale(scaleFactor, scaleFactor, 1.0f);
-        context.getMatrices().translate(-baseX, -baseY, 0);
+
+        int localX = 0;
+        int localY = 0;
 
         int titleBgAlpha  = sst_alphaFromPercent(cfg.titleBackgroundOpacity);
         int entryBgAlpha  = sst_alphaFromPercent(cfg.backgroundOpacity);
@@ -134,28 +137,28 @@ public abstract class InGameHudMixin {
         int titleTxtAlpha = sst_alphaFromPercent(cfg.titleTextOpacity);
 
         int titleBgColor = (titleBgAlpha << 24) | 0x212121;
-        context.fill(baseX - 2, baseY, baseX + boardWidth - 2, baseY + lineHeight - 1, titleBgColor);
+        context.fill(localX, localY, localX + boardWidth, localY + lineHeight - 1, titleBgColor);
 
         int titleColor = sst_colorWithAlpha(0xFFFFFF, titleTxtAlpha);
         context.drawText(textRenderer, titleText,
-                baseX + (boardWidth - 2 - titleWidth) / 2 - 1,
-                baseY + 1,
+                localX + (boardWidth - titleWidth) / 2,
+                localY + 1,
                 titleColor, false);
 
         int entryBgColor = (entryBgAlpha << 24) | 0x131313;
         for (int i = 0; i < rendered.size(); i++) {
-            int rowY = baseY + lineHeight - 1 + i * lineHeight;
+            int rowY = localY + lineHeight - 1 + i * lineHeight;
 
-            context.fill(baseX - 2, rowY, baseX + boardWidth - 2, rowY + lineHeight, entryBgColor);
+            context.fill(localX, rowY, localX + boardWidth, rowY + lineHeight, entryBgColor);
 
             RenderedEntry re = rendered.get(i);
-            context.drawText(textRenderer, re.nameText(), baseX, rowY + 1,
+            context.drawText(textRenderer, re.nameText(), localX + 4, rowY + 1,
                     sst_colorWithAlpha(0xFFFFFF, textAlpha), false);
 
             if (cfg.showScores && re.scoreText() != null) {
                 int scoreWidth = textRenderer.getWidth(re.scoreText());
                 context.drawText(textRenderer, re.scoreText(),
-                        baseX + boardWidth - 4 - scoreWidth,
+                        localX + boardWidth - 4 - scoreWidth,
                         rowY + 1,
                         sst_colorWithAlpha(0xFF5555, textAlpha), false);
             }
