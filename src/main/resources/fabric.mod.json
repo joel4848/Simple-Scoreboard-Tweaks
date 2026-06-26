@@ -1,31 +1,35 @@
 {
-	"schemaVersion": 1,
-	"id": "simple-scoreboard-tweaks",
-	"version": "${version}",
-	"name": "Simple Scoreboard Tweaks",
-	"description": "This is an example description! Tell everyone what your mod is about!",
-	"authors": [
-		"Me!"
-	],
-	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
-	},
-	"license": "CC0-1.0",
-	"icon": "assets/simple-scoreboard-tweaks/icon.png",
-	"environment": "*",
-	"entrypoints": {
-		"main": [
-			"com.joel4848.simplescoreboardtweaks.SimpleScoreboardTweaks"
-		]
-	},
-	"mixins": [
-		"simple-scoreboard-tweaks.mixins.json"
-	],
-	"depends": {
-		"fabricloader": ">=0.19.3",
-		"minecraft": "~1.21.1",
-		"java": ">=21",
-		"fabric-api": "*"
-	}
+  "schemaVersion": 1,
+  "id": "simple-scoreboard-tweaks",
+  "version": "${version}",
+  "name": "Simple Scoreboard Tweaks",
+  "description": "Customise how the scoreboard sidebar looks: toggle visibility, scores, sorting, entry count, position, opacity, and scale.",
+  "authors": [
+    "joel4848"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/simple-scoreboard-tweaks/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.joel4848.simplescoreboardtweaks.SimpleScoreboardTweaks"
+    ],
+    "modmenu": [
+      "com.joel4848.simplescoreboardtweaks.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "simple-scoreboard-tweaks.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*",
+    "cloth-config": ">=15.0.0"
+  },
+  "suggests": {
+    "modmenu": "*"
+  }
 }

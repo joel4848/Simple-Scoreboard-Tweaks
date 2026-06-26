@@ -1,0 +1,45 @@
+{
+  "config.simple-scoreboard-tweaks.title": "Simple Scoreboard Tweaks",
+
+  "config.simple-scoreboard-tweaks.category.visibility": "Visibility",
+  "config.simple-scoreboard-tweaks.category.sorting":    "Sorting & Entries",
+  "config.simple-scoreboard-tweaks.category.position":   "Position & Scale",
+  "config.simple-scoreboard-tweaks.category.opacity":    "Opacity",
+
+  "config.simple-scoreboard-tweaks.showScoreboard":         "Show Scoreboard",
+  "config.simple-scoreboard-tweaks.showScoreboard.tooltip": "Completely show or hide the sidebar scoreboard.",
+
+  "config.simple-scoreboard-tweaks.showScores":         "Show Score Numbers",
+  "config.simple-scoreboard-tweaks.showScores.tooltip": "Show or hide the score value displayed next to each player entry.",
+
+  "config.simple-scoreboard-tweaks.sortMode":         "Sort Order",
+  "config.simple-scoreboard-tweaks.sortMode.tooltip": "How scoreboard entries are sorted.",
+  "config.simple-scoreboard-tweaks.sortMode.score_desc": "Score: High → Low",
+  "config.simple-scoreboard-tweaks.sortMode.score_asc":  "Score: Low → High",
+  "config.simple-scoreboard-tweaks.sortMode.name_asc":   "Name: A → Z",
+  "config.simple-scoreboard-tweaks.sortMode.name_desc":  "Name: Z → A",
+
+  "config.simple-scoreboard-tweaks.maxEntries":         "Max Entries",
+  "config.simple-scoreboard-tweaks.maxEntries.tooltip": "Maximum number of player entries shown (0 hides all entries but keeps the title).",
+
+  "config.simple-scoreboard-tweaks.offsetX":         "X Offset (pixels)",
+  "config.simple-scoreboard-tweaks.offsetX.tooltip": "Horizontal offset from the default position. Negative moves left, positive moves right.",
+
+  "config.simple-scoreboard-tweaks.offsetY":         "Y Offset (pixels)",
+  "config.simple-scoreboard-tweaks.offsetY.tooltip": "Vertical offset from the default position. Negative moves up, positive moves down.",
+
+  "config.simple-scoreboard-tweaks.scale":         "Scale (%)",
+  "config.simple-scoreboard-tweaks.scale.tooltip": "Overall scale of the scoreboard as a percentage of its normal size at your GUI scale. 100 = default size.",
+
+  "config.simple-scoreboard-tweaks.backgroundOpacity":         "Entry Background Opacity (%)",
+  "config.simple-scoreboard-tweaks.backgroundOpacity.tooltip": "Opacity of the dark background behind each score entry row.",
+
+  "config.simple-scoreboard-tweaks.titleBackgroundOpacity":         "Title Background Opacity (%)",
+  "config.simple-scoreboard-tweaks.titleBackgroundOpacity.tooltip": "Opacity of the dark background behind the scoreboard title.",
+
+  "config.simple-scoreboard-tweaks.textOpacity":         "Entry Text Opacity (%)",
+  "config.simple-scoreboard-tweaks.textOpacity.tooltip": "Opacity of the player name and score text in each entry row.",
+
+  "config.simple-scoreboard-tweaks.titleTextOpacity":         "Title Text Opacity (%)",
+  "config.simple-scoreboard-tweaks.titleTextOpacity.tooltip": "Opacity of the scoreboard title text."
+}
