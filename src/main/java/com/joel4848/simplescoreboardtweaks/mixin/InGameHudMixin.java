@@ -9,6 +9,7 @@ import net.minecraft.client.render.RenderTickCounter;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.scoreboard.ScoreboardEntry;
 import net.minecraft.scoreboard.ScoreboardObjective;
+import net.minecraft.scoreboard.Team;
 import net.minecraft.scoreboard.number.NumberFormat;
 import net.minecraft.scoreboard.number.StyledNumberFormat;
 import net.minecraft.text.Text;
@@ -94,7 +95,9 @@ public abstract class InGameHudMixin {
         List<RenderedEntry> rendered = new ArrayList<>();
 
         for (ScoreboardEntry entry : entries) {
-            Text nameText  = entry.name();
+            Team team = scoreboard.getScoreHolderTeam(entry.owner());
+            Text nameText = Team.decorateName(team, entry.name());
+
             Text scoreText = null;
             if (cfg.showScores) {
                 NumberFormat fmt = entry.numberFormatOverride() != null
@@ -111,7 +114,7 @@ public abstract class InGameHudMixin {
         }
 
         int contentWidth = Math.max(titleWidth, maxEntryWidth);
-        int boardWidth   = contentWidth + 8; // 4 px padding each side
+        int boardWidth   = contentWidth + 8;
         int lineHeight   = 10;
         int boardHeight  = (rendered.size() + 1) * lineHeight + 2;
 
@@ -152,15 +155,27 @@ public abstract class InGameHudMixin {
             context.fill(localX, rowY, localX + boardWidth, rowY + lineHeight, entryBgColor);
 
             RenderedEntry re = rendered.get(i);
-            context.drawText(textRenderer, re.nameText(), localX + 4, rowY + 1,
-                    sst_colorWithAlpha(0xFFFFFF, textAlpha), false);
+
+            int nativeNameColor = re.nameText().getStyle().getColor() != null
+                    ? re.nameText().getStyle().getColor().getRgb()
+                    : 0xFFFFFF;
+            int finalNameColor = sst_colorWithAlpha(nativeNameColor, textAlpha);
+
+            context.drawText(textRenderer, re.nameText(), localX + 2, rowY + 1,
+                    finalNameColor, false);
 
             if (cfg.showScores && re.scoreText() != null) {
                 int scoreWidth = textRenderer.getWidth(re.scoreText());
+
+                int nativeScoreColor = re.scoreText().getStyle().getColor() != null
+                        ? re.scoreText().getStyle().getColor().getRgb()
+                        : 0xFF5555;
+                int finalScoreColor = sst_colorWithAlpha(nativeScoreColor, textAlpha);
+
                 context.drawText(textRenderer, re.scoreText(),
-                        localX + boardWidth - 4 - scoreWidth,
+                        localX + boardWidth - scoreWidth,
                         rowY + 1,
-                        sst_colorWithAlpha(0xFF5555, textAlpha), false);
+                        finalScoreColor, false);
             }
         }
 
