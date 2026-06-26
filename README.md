@@ -1,9 +1,21 @@
+
 # Simple Scoreboard Tweaks
 
-## Setup
+A simple, no-frills mod that lets you tweak basic aspects of the scoreboard sidebar display.
 
-For setup instructions, please see the [Fabric Documentation page](https://docs.fabricmc.net/develop/getting-started/creating-a-project#setting-up) related to the IDE that you are using.
+## Features
+
+- Hide the scoreboard entirely
+- Hide the numbers on the scoreboard
+- Change the maximum number of entries the scoreboard can display (0-100, default 15)
+- Sort by player name A→Z/Z→A, or by score low→high or high→low
+- Change the overall size of the scoreboard (10%-300%)
+- Change the scoreboard's x and y position
+- Change the opacity of the title and/or score list text and background
+## Screenshots
+
+![Screenshot](https://raw.githubusercontent.com/joel4848/Simple-Scoreboard-Tweaks/refs/heads/main/Screenshots/Menu.png)
 
 ## License
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
